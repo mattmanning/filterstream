@@ -3,6 +3,7 @@ var app         = express.createServer();
 var io          = require('socket.io').listen(app);
 var TwitterNode = require('twitter-node').TwitterNode;
 var sys         = require('sys');
+var port        = process.env.PORT || 3001;
 
 app.configure(function(){
   app.use(express.static(__dirname + '/public'));
@@ -13,7 +14,9 @@ io.configure(function () {
   io.set("polling duration", 10);
 });
 
-app.listen(3001);
+app.listen(port, function() {
+  console.log("Listening on " + port);
+});
 
 var twit = new TwitterNode({
   user:     'annoy_bot',
