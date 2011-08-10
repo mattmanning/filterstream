@@ -8,6 +8,11 @@ app.configure(function(){
   app.use(express.static(__dirname + '/public'));
 });
 
+io.configure(function () {
+  io.set("transports", ["xhr-polling"]);
+  io.set("polling duration", 10);
+});
+
 app.listen(3001);
 
 var twit = new TwitterNode({
