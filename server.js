@@ -19,8 +19,8 @@ app.listen(port, function() {
 });
 
 var twit = new TwitterNode({
-  user:     'annoy_bot',
-  password: 'atlrugrocks',
+  user:     process.env.TWITTER_USERNAME,
+  password: process.env.TWITTER_PASSWORD,
   track:    ['baseball','ruby']
 });
 
